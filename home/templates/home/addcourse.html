@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block js %}
+{% if error %}
+<!--<script>-->
+<!--    alert('{{ error }}');-->
+<!--</script>-->
+{{error}}
+{% endif %}
+{% endblock %}
+
+
+{% block main %}
+<form method="post" enctype="multipart/form-data"   class="form-control text-center border border-light p-5" >
+    {% csrf_token %}
+<!--    Uploaded by :-->
+<!--    <input type="text" name="username" value="{{user.details.username}}" disabled /><br>-->
+    Course_Title :
+    <input type="text" class="form-control mb-4" name="course_name"  required /><br>
+    Video_Title <h6 class ="alert-primary">Do not give spaces or any special character</h6> :
+    <input type="text" class="form-control mb-4" name="video_name"  required /><br>
+    Tags :<br>
+    <input type="radio" name="tags" value="Maths" />Maths<br>
+    <input type="radio" name="tags" value="Science" />Science<br>
+    <input type="radio" name="tags" value="Physics" />Physics<br>
+    <input type="radio" name="tags" value="Data_Structure" />Data Structure<br>
+    <br>
+<!--    Author of book :-->
+<!--    <input type="text" name="author_name"  required /><br>-->
+    Upload Video:
+
+        <input type="file" class="form-control mb-4" name="url" accept=".mp4" >
+<!--        <input type="hidden" name="url" id="url">-->
+<!--        <button type="button" onclick="uploadimage()">Upload</button><br><br>-->
+        <br>
+
+
+    <input type="submit" class="form-control mb-4" value="publish">
+ </form>
+<br>
+{% endblock %}
+

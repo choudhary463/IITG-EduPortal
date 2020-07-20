@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% block js %}{% load static %}{% endblock %}
+{% block courses %}active{% endblock %}
+{% block mycss %}
+<style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+@import url('https://fonts.googleapis.com/css?family=Raleway:800&display=swap');
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+.heading {
+font-family: 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
+font-size: 36px;
+}
+body{
+background: #ffffff
+}
+#logo {
+  font-family: 'Raleway', sans-serif;
+  color: #ffffff;
+  text-decoration: none;
+  /*text-transform: uppercase;*/
+  font-size: 150px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+  text-shadow: #EDEDED 3px 2px 0;
+  position: relative;
+  margin-top: 0px;
+}
+.column {
+  float: left;
+    /*display: block;*/
+}
+.containers h2 {
+  font-size: 20px;
+  /*font-weight: bold;*/
+  font-family: 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
+}
+@media screen and (max-width: 650px) {
+  .col-lg-3 {
+    width: 100%;
+    display: block;
+  }
+}
+.myImg {
+  height: 210px;
+  width: 216px;
+  margin-top: 20px;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2 );
+    width: 260px;
+   height: 400px;
+  margin-bottom: 16px;
+  padding: 0 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  position: relative;
+ background: LightGray;  /* fallback for old browsers */
+/*background: -webkit-linear-gradient(to bottom, #CFDEF3, #E0EAFC);*/   /*Chrome 10-25, Safari 5.1-6 */
+/*background: linear-gradient(to bottom, #CFDEF3, #E0EAFC);*/ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+border-radius:10px;
+}
+.containers {
+  padding: 0 16px;
+}
+.containers::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.title {
+  color: grey;
+  margin-top: -5px;
+  margin-bottom: 20px;
+}
+.col-lg-3 {
+  padding-bottom: 20px;
+}
+.upper{
+   /* The image used */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://media.gettyimages.com/photos/graduation-day-picture-id1066324992?s=612x612");
+  /* Full height */
+  height: 350px;
+  /* Center and scale the image nicely */
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+        /*    height: 40vh;
+          background-attachment: fixed;
+          background-size: cover;
+          margin-top:0;
+          padding-top:0; */
+}
+.mail{
+ /* display: inline-block;*/
+ /* padding: 8px;*/
+  /*text-align: center;*/
+/*position: absolute;*/
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom:   0px;
+  padding-bottom: 0px;
+}
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  width: 80%;
+  position: absolute;
+  right: 0px;
+  margin-right: 26px;
+  margin-left: 26px;
+  bottom:   10px;
+  /*margin-bottom: 0px !important;*/
+}
+.button:hover {
+  background-color: #555;
+}
+.row {
+  padding-bottom: 30px;
+}
+.cent{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+{% endblock %}
+
+{% block main %}
+ <center>
+<div class="upper image"><h1 id="logo">Courses</h1>
+</div>
+<br>
+<div class="col-lg-1"></div>
+<div class="col-lg-10 cent ">
+<div class="row">
+  <div class="col-lg-3 ">
+    <div class="card">
+      <img class="myImg"  src="{% static 'home/extwebsite.jpg' %}" alt="courses" style="width:100%">
+      <div class="containers">
+        <h2>Add Internal Course </h2>
+      </div>
+      <p><a href="/stuff/addcourse"><button class="button">Go</button></a></p>
+    </div>
+  </div>
+
+  <div class="col-lg-3 ">
+    <div class="card">
+      <img class="myImg"  src="{% static 'home/extwebsite.jpg' %}" alt="extcourses" style="width:100%">
+      <div class="containers">
+        <h2>Add External Course </h2>
+      </div>
+      <p><a href="/stuff/addextcourse"><button class="button">Go</button></a></p>
+    </div>
+  </div>
+
+  <div class="col-lg-3 ">
+    <div class="card">
+      <img class="myImg"  src="{% static 'home/online-course-512.png' %}" alt="list" style="width:100%">
+      <div class="containers">
+        <h2> Internal Courses List</h2>
+      </div>
+      <p><a href="/stuff/course_list"><button class="button">Go</button></a></p>
+    </div>
+  </div>
+
+  <div class="col-lg-3 ">
+    <div class="card">
+      <img class="myImg"  src="{% static 'home/online-course-512.png' %}" alt="list2" style="width:100%">
+      <div class="containers">
+        <h2>External Courses List</h2>
+      </div>
+      <p><a href="/stuff/extcourse_list"><button class="button">Go</button></a></p>
+    </div>
+  </div>
+  
+</div>
+</div>
+</div>
+</center>
+{% endblock %}

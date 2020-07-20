@@ -1,0 +1,41 @@
+
+
+{% extends "base.html" %}
+{% block js %}
+{% if error %}
+<!--<script>-->
+<!--    alert('{{ error }}');-->
+<!--</script>-->
+{{error}}
+{% endif %}
+{% endblock %}
+
+
+{% block main %}
+<form method="post" enctype="multipart/form-data"   class="form-control text-center border border-light p-5" >
+    {% csrf_token %}
+<!--    Uploaded by :-->
+<!--    <input type="text" name="username" value="{{user.details.username}}" disabled /><br>-->
+    Notes_Title :
+    <h6 class ="alert-primary">Do not give spaces or any special character</h6>
+    <input type="text" class="form-control mb-4" name="notes_name"  required /><br>
+
+
+
+
+    Upload Notes:
+
+        <input type="file" class="form-control mb-4" name="url" accept=".pdf" >
+
+        <br>
+
+
+    <input type="submit" class="form-control mb-4" value="publish">
+ </form>
+<br>
+{% endblock %}
+
+
+
+
+

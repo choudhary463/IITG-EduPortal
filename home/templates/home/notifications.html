@@ -1,0 +1,108 @@
+
+
+
+{% extends "base.html" %}
+{% block js %}
+{% if error %}
+<!--<script>-->
+<!--    alert('{{ error }}');-->
+<!--</script>-->
+{{error}}
+{% endif %}
+{% endblock %}
+
+{% block css %}
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <p><h1>Notifications:</h1></p>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for notification books.." title="Type in a name">
+  <table class="table table-hover" id="myTable">
+    <thead>
+      <tr class="header">
+        <th>Books</th>
+        <th>Message</th>
+          <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for my_reply, users, n_id, mystr,mybooks in combine_list  %}
+      <tr>
+          <td>{{mybooks}}</td>
+           <td>{{mystr}}</td>
+        <td><a href="{% url 'home:n_delete' n_id %}">Delete</td>
+
+
+      </tr>
+{% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
+
+
+
+{% block js2 %}
+<script>
+
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+{% endblock %}
+
+
+

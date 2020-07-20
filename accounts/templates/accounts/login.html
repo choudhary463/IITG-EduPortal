@@ -1,0 +1,35 @@
+{% extends "base1.html" %}
+{% block js %}
+{% if error %}
+<!--<script>-->
+<!--    alert('{{ error }}');-->
+<!--</script>-->
+{% endif %}
+{% endblock %}
+
+
+{% block main %}
+
+
+
+<form method="post" class="text-center border border-light p-5" action="">
+    {% csrf_token %}
+    <font color="#ff0000">{{error}}</font><br>
+    Email :
+    <input type="email" class="form-control mb-4" name="email" required/>
+    password :
+    <input type="password" class="form-control mb-4" name="password" required />
+    <input type="submit" lass="btn btn-info btn-block my-4" value="login" required />
+
+</form>
+
+
+
+    <!-- Register -->
+    <p>Not a member?
+        <a href="{% url 'accounts:signup' %}">Register</a>
+    </p>
+
+{% endblock %}
+
+

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block js %}
+{% if error %}
+<!--<script>-->
+<!--    alert('{{ error }}');-->
+<!--</script>-->
+{{error}}
+{% endif %}
+{% endblock %}
+
+
+{% block main %}
+    <form method="post" action=""   class="text-center border border-light p-5" >
+    {% csrf_token %}
+<!--    Uploaded by :-->
+<!--    <input type="text" name="username" value="{{user.details.username}}" disabled /><br>-->
+    External Course Title :
+    <input type="text" class="form-control mb-4"  name="course_name"  required /><br>
+    Link :
+    <input type="url" class="form-control mb-4" name="link"  required /><br>
+    Tags :<br>
+    <input type="radio" name="tags" value="Maths" />Maths<br>
+    <input type="radio" name="tags" value="Science" />Science<br>
+    <input type="radio" name="tags" value="Physics" />Physics<br>
+    <input type="radio" name="tags" value="Data_Structure" />Data Structure<br>
+    <br>
+    <input type="submit" class="form-control mb-4" value="Add">
+
+</form>
+<br>
+{% endblock %}

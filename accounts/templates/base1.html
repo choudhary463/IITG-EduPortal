@@ -1,0 +1,116 @@
+{% load static %}
+{% block js %}
+{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>E-Learning, IITG</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{% static 'css/footer.css' %}" >
+	<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+	{% block mycss %}{% endblock %}
+
+</head>
+<body>
+<!--header-->
+<!-- Navigation -->
+<div class="navclass">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+	<div class="container-fluid">
+		<a href="" class="navbar-brand" href="/"><img src="https://i.pinimg.com/originals/30/10/dc/3010dc1829c10b3e645b89b917cf1c72.jpg" alt="Computer"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+                <li class="nav-item {% block courses %}{% endblock %}">
+					<a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+				</li>
+				<li class="nav-item {% block books %}{% endblock %}">
+					<a class="nav-link" href="{% url 'accounts:signup' %}">Register</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</div>
+<!--header ends-->
+<div class="bg-secondary">
+<!-- main -->
+{% block main %}
+{% endblock %}
+<!-- main ends -->
+</div>
+<!--- Footer -->
+<div class="footclass">
+<footer id="footer" class="footer-1">
+<div class="main-footer widgets-dark typo-light">
+<div class="container">
+<div class="row">
+
+<div class="col-xs-12 col-sm-6 col-md-4">
+<div class="widget subscribe no-box">
+<h5 class="widget-title">E-Learning<span></span></h5>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+</div>
+
+<div class="col-xs-12 col-sm-6 col-md-4">
+<div class="widget no-box">
+<h5 class="widget-title">Quick Links<span></span></h5>
+<ul class="thumbnail-widget">
+<li>
+<div class="thumb-content"><a href="{% url 'accounts:login' %}">Login</a></div>
+</li>
+<li>
+<div class="thumb-content"><a href="{% url 'accounts:signup' %}">Register</a></div>
+</li>
+
+</ul>
+</div>
+</div>
+
+
+<div class="col-xs-12 col-sm-6 col-md-4">
+
+<div class="widget no-box">
+<h5 class="widget-title">Contact Us<span></span></h5>
+
+<p><a href="#" title="glorythemes">elearning@iitg.ac.in</a></p>
+<ul class="social-footer2">
+
+<li class=""><a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i> &nbsp;E-Learning, IIT Guwahati</a></li>
+<li class=""><a href="#" target="_blank" title="Medium"><i class="fab fa-medium"></i> &nbsp;E-Learning IITG</a></li>
+<!-- <li class=""><a href="https://twitter.com" target="_blank" title="Twitter"><img alt="Twitter" width="30" height="30" src=""></a></li>
+<li class=""><a title="instagram" target="_blank" href="https://www.instagram.com/"><img alt="instagram" width="30" height="30" src=""></a></li> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col-md-12 text-center">
+<p>Copyright KamengTeam © 2019. All rights reserved.</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</div>
+
+{% block js2 %}
+{% endblock %}
+</body>
+</html>

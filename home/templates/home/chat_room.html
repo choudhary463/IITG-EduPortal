@@ -1,0 +1,121 @@
+
+
+
+{% extends "base.html" %}
+{% block js %}
+{% if error %}
+<!--<script>-->
+<!--    alert('{{ error }}');-->
+<!--</script>-->
+{{error}}
+{% endif %}
+{% endblock %}
+
+{% block mycss %}
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+#chatbig{
+  background-color:rgb(38, 46, 46);
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#chatbox{
+  margin-top:5px;
+  border-radius: 8px;
+  border:3px rgb(149, 165, 149) solid;
+  
+  background-color:grey;
+  width:50rem;
+  height:auto;
+}
+#mera, #tera{
+  list-style: none;
+}
+#tera{
+  margin:5px;
+  margin-right: auto;
+  padding:4px;
+  background-color: blanchedalmond;
+  border-radius: 3px;
+}
+#mera{
+  margin:5px;
+  border-radius: 3px;
+  padding:4px;
+  margin-left:auto;
+  background-color: blanchedalmond;
+}
+.chatline1{
+  display:flex;
+  flex-wrap: wrap;
+  background-color:grey;
+  border-radius: 8px;
+  
+  
+}
+.chatline2{
+  display:flex;
+  flex-wrap: wrap;
+  background-color: grey;
+  border-radius: 8px;
+}
+
+form{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.formstyle{
+  display:flex;
+  
+  justify-content: center;
+}
+</style>
+{% endblock %}
+
+{% block main %}
+<div id='chatbig'>
+  <ul id='chat-items'>
+      
+      <div id='chatbox'>
+        {% for inds,message,to,from in combine_chat %}
+          {% ifequal u1 from %}
+            <div class='chatline1'>
+              <li id='mera'>{{ message }}</li>
+            </div>
+          {% else %}
+            <div class='chatline2'>
+              <li id='tera'>{{ message }}</li>
+            </div>
+          {% endifequal %}
+
+        {% endfor %}
+      </div>
+  </ul>
+</div>
+
+
+<form method="post" action="{% url 'home:chatroom' selfid otherid  %}" id="form">
+    {% csrf_token %}
+    <div class='formstyle'>
+      <textarea name="msg" rows="1" cols="15" style=" background-color: #CCE5FF " id="id_message" required></textarea>
+      <br>
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Send</button>
+    </div>
+</form>
+
+
+
+{% endblock %}
+
+
+
+{% block js2 %}
+
+{% endblock %}

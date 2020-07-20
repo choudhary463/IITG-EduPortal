@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block js %}
+{% if error %}
+<!--<script>-->
+<!--    alert('{{ error }}');-->
+<!--</script>-->
+{{error}}
+{% endif %}
+{% endblock %}
+
+
+
+{% block css %}
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <p><h1>BOOKS:</h1></p>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for book_title.." title="Type in a name">
+  <table class="table table-hover" id="myTable">
+    <thead>
+      <tr class="header">
+        <th>Book_Title</th>
+        <th>Tag</th>
+        <th>User</th>
+          <th>Status</th>
+        <th>Available</th>
+          <th>Contact</th>
+          <th>Request</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for list_books,tags,usernames,status,emails,approved,urls in combine_list  %}
+      <tr>
+          <td>{{list_books}}</td>
+           <td>{{tags}}</td>
+        <td>{{usernames}}</td>
+        <td>{{status}}</td>
+          {% if tags != "General"  %}
+            <td> <a href = {{urls}}>Download</td>
+          {% endif %}
+          {% if approved == 0 and tags == "General" %}
+            <td>(To be Approved)</td>
+         {% endif %}
+          {% if approved == 1 and tags == "General" %}
+            <td>  <a href = {{urls}}>Download</td>
+          {% endif %}
+        <td>
+            {% if status == 1 %}
+                {{emails}}
+            {% else %}
+                Not Available
+            {% endif %}
+        </td>
+          <td>
+            {% if status == 1 %}
+              <a href="{% url 'home:requestbook'  usernames list_books status %}"> Request</a>
+            {% else %}
+                Not Available
+            {% endif %}
+        </td>
+
+      </tr>
+{% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+
+
+{% block js2 %}
+<script>
+
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++)
+  {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td)
+    {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1)
+       {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+{% endblock %}
